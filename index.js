@@ -1,4 +1,4 @@
-export class MapWithTimeout extends Map {
+class MapWithTimeout extends Map {
   constructor (persistenceTimeout) {
     super ();
     this.persistenceTimeout = persistenceTimeout;
@@ -11,7 +11,7 @@ export class MapWithTimeout extends Map {
   }
 }
 
-export const memoize =
+const memoize =
   (fn, cache = new Map ()) =>
     (...args) => {
       const inCache = cache.has (args);
@@ -22,7 +22,7 @@ export const memoize =
       return cache.get (args);
     };
 
-export const memoizeCurry =
+const memoizeCurry =
   (fn, cache = new Map ()) =>
     arg => {
       const inCache = cache.has (arg);
@@ -34,3 +34,9 @@ export const memoizeCurry =
       }
       return cache.get (arg);
     };
+
+module.exports = {
+  MapWithTimeout,
+  memoize,
+  memoizeCurry
+}
